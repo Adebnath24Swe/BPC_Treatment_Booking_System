@@ -58,7 +58,7 @@ public class PatientManager {
     }
     
     
-    
+    // Add patient data to patient list and save to file.
     public void addNewPatient(Scanner scanner){
     
         
