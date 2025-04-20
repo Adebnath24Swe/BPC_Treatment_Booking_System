@@ -121,7 +121,7 @@ public class PatientManager {
 }
  
  
- //Remove patient by it's id:
+ //Remove patient by it's id:-
  
  public void removePatientById(Scanner scanner) {
     System.out.print("Enter Patient ID to remove: ");
