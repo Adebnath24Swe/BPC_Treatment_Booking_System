@@ -44,7 +44,7 @@ public class PatientManager {
             System.out.println("Error message: "+ e.getMessage());
         }
     }
-    
+    //Display all exiting patient data
     public void displayAllpatient(){
       if(patientList.isEmpty()){
           System.out.println("Oops!! No patient data found!!");
