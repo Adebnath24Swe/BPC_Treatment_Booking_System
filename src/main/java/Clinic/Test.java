@@ -53,7 +53,7 @@ public class Test {
     }
     
     
-    
+    // Patient sub-menu updated
     private static void patientMenu(PatientManager pManager, Scanner scanner) {
         boolean back = false;
 
@@ -64,6 +64,8 @@ public class Test {
             System.out.println("3. Remove Patient by ID");
             System.out.println("4. Back to Main Menu");
             System.out.print("Choose an option: ");
+            
+            
             String choice = scanner.nextLine().trim();
 
             switch (choice) {
