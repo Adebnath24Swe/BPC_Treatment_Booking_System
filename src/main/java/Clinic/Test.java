@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Test {
     
-    
+    // Main execution poin.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         PatientManager pManager = new PatientManager();
