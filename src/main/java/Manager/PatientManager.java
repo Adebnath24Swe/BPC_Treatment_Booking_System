@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class PatientManager {
     private ArrayList<Patient> patientList= new ArrayList<>();
     
+    
+    // load patient data successfully.
     public void loadPatientFromFile(String file){
         
         try{
