@@ -103,7 +103,7 @@ public class PatientManager {
     }
 
     
-    
+ // Patient data saving to txt file.   
  public void savePatientTofile(String filePath, Patient p) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
         writer.write(p.getId()+","+p.getName() + "," + p.getAddress() + "," + p.getTelephone_no());
@@ -119,7 +119,7 @@ public class PatientManager {
 }
  
  
- //Remove patient by id:
+ //Remove patient by it's id:
  
  public void removePatientById(Scanner scanner) {
     System.out.print("Enter Patient ID to remove: ");
