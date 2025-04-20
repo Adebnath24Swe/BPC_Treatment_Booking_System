@@ -138,7 +138,7 @@ public class PatientManager {
 }
 
  
- //All patient id rewrite
+ //All patient id rewrite to file
 public void rewriteAllPatientsToFile(String filePath) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
         for (Patient p : patientList) {
