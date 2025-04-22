@@ -400,6 +400,8 @@ public class Test {
         }
     }
 
+
+//-----Appointment menu----------
     //    public static void appointmentMenu(AppointmentManager am, List<Patient> patients, List<Pysiotherapist> physios, Scanner scanner) {
 //    boolean back = false;
 //    while (!back) {
