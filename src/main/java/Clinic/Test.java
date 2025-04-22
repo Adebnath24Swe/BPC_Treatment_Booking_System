@@ -400,7 +400,27 @@ public class Test {
         }
     }
 
-    
+    //    public static void appointmentMenu(AppointmentManager am, List<Patient> patients, List<Pysiotherapist> physios, Scanner scanner) {
+//    boolean back = false;
+//    while (!back) {
+//        System.out.println("\n--- 📅 Appointment Booking Menu ---");
+//        System.out.println("1. Book by Physiotherapist's name");
+//        System.out.println("2. Book by Expert areas");
+//        
+//        System.out.println("3. View All Appointments");
+//        System.out.println("4. Back to Main Menu");
+//        System.out.print("Choose an option: ");
+//        String choice = scanner.nextLine();
+//
+//        switch (choice) {
+//            case "1" -> am.bookByPhysiotherapistName(patients, physios, scanner);
+//            case "2" -> System.out.println("Booking by expertise");
+//            case "3" -> am.showAllAppointments();
+//            case "4" -> back = true;
+//            default -> System.out.println("Ops!! Invalid option. Try again.");
+//        }
+//    }
+//}
     
     
     
