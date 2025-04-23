@@ -27,6 +27,10 @@ public class Test {
     
     private static List<Appointment> allAppointments = new ArrayList<>();
     
+    
+    //----------Static block goes here -----------------
+    
+    // this static block will execute first to load all data.
     static {
         Physiotherapist therapist1 = new Physiotherapist("Sarah Thompson", "Address 1", "111");
         therapist1.setId("PHY001");
@@ -50,7 +54,7 @@ public class Test {
 
         allPhysiotherapists.addAll(physiotherapistIdMap.values()); // Add them to the list as well.
     }
-
+//-------------Main execution point of program--------
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         PatientManager pManager = new PatientManager();
@@ -107,6 +111,13 @@ public class Test {
         scanner.close();
     }
 
+    
+    
+    
+    
+    
+    
+    
     // Method to define expertise and treatments
     private static List<AreaOfExpertise> initializeExpertiseAndTreatments() {
         AreaOfExpertise physiotherapy = new AreaOfExpertise("Physiotherapy");
@@ -330,6 +341,8 @@ public class Test {
 
     //--------All sub menus goes here-------
     
+  
+    // -------------Patient Submenu--------
     private static void patientMenu(PatientManager pManager, Scanner scanner) {
         boolean back = false;
 
@@ -353,7 +366,7 @@ public class Test {
         }
     }
 
-    // New method for Physiotherapist Management Submenu
+    // -------------Physiotherapist Submenu--------
     private static void physiotherapistMenu(Scanner scanner) {
         boolean back = false;
         while (!back) {
@@ -403,7 +416,7 @@ public class Test {
     }
 
 
-//-----Appointment menu----------
+//-----Appointment Submenu----------
 private static void appointmentBookingMenu(Scanner scanner, PatientManager pManager) {
   boolean back = false;
   while (!back) {
@@ -896,5 +909,10 @@ private static void appointmentBookingMenu(Scanner scanner, PatientManager pMana
  private static void generateReport() {
   ReportGenerator.generateMonthlyReport(allPhysiotherapists, allAppointments);
  }
+ 
+ 
+ 
+ 
+ 
 }
 
