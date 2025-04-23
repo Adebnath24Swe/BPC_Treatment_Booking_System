@@ -1,0 +1,45 @@
+Week 1 – Physiotherapist Assignment Schedule (May 2025)
+
+Physiotherapists & Expertise:
+ID(Phy001)- Dr. Sarah Thompson      | Physiotherapy, Rehabilitation
+ID(Phy002)- Dr. Alex Reed           | Physiotherapy
+ID(Phy003)- Dr. Nina Patel          | Osteopathy
+ID(Phy004)- Dr. James Walker        | Osteopathy, Rehabilitation
+ID(Phy005)- Dr. Emma Lewis          | Rehabilitation
+
+--------------------------------------------------------------------------------------------------------------------------
+ID           | Area of Expertise         | Treatment                   | Day        | Date        | Time Slot              | Assigned Physiotherapist (ID)
+-------------|---------------------------|-----------------------------|------------|-------------|------------------------|-------------------------------
+sun-w1-001   | Physiotherapy             | Neural Mobilisation         | Sunday     | 2025-05-04  | 9:00 AM – 10:00 AM     | Dr. Sarah Thompson (Phy001)
+sun-w1-002   | Physiotherapy             | Neural Mobilisation         | Sunday     | 2025-05-04  | 10:00 AM – 11:00 AM    | Dr. Alex Reed (Phy002)
+sun-w1-003   | Physiotherapy             | Neural Mobilisation         | Sunday     | 2025-05-04  | 11:00 AM – 12:00 PM    | Dr. Sarah Thompson (Phy001)
+sun-w1-004   | Physiotherapy             | Neural Mobilisation         | Sunday     | 2025-05-04  | 12:00 PM – 1:00 PM     | Dr. Alex Reed (Phy002)
+
+mon-w1-005   | Physiotherapy             | Massage (Physiotherapy)     | Monday     | 2025-05-05  | 9:00 AM – 10:00 AM     | Dr. Alex Reed (Phy002)
+mon-w1-006   | Physiotherapy             | Massage (Physiotherapy)     | Monday     | 2025-05-05  | 10:00 AM – 11:00 AM    | Dr. Sarah Thompson (Phy001)
+mon-w1-007   | Physiotherapy             | Massage (Physiotherapy)     | Monday     | 2025-05-05  | 11:00 AM – 12:00 PM    | Dr. Alex Reed (Phy002)
+mon-w1-008   | Physiotherapy             | Massage (Physiotherapy)     | Monday     | 2025-05-05  | 12:00 PM – 1:00 PM     | Dr. Sarah Thompson (Phy001)
+
+wed-w1-009   | Physiotherapy             | Massage (Physiotherapy)     | Wednesday  | 2025-05-07  | 9:00 AM – 10:00 AM     | Dr. Alex Reed (Phy002)
+wed-w1-010   | Physiotherapy             | Massage (Physiotherapy)     | Wednesday  | 2025-05-07  | 10:00 AM – 11:00 AM    | Dr. Sarah Thompson (Phy001)
+wed-w1-011   | Physiotherapy             | Massage (Physiotherapy)     | Wednesday  | 2025-05-07  | 11:00 AM – 12:00 PM    | Dr. Alex Reed (Phy002)
+wed-w1-012   | Physiotherapy             | Massage (Physiotherapy)     | Wednesday  | 2025-05-07  | 12:00 PM – 1:00 PM     | Dr. Sarah Thompson (Phy001)
+
+thu-w1-013   | Osteopathy                | Mobilisation of Spine/Joints| Thursday   | 2025-05-08  | 9:00 AM – 10:00 AM     | Dr. Nina Patel (Phy003)
+thu-w1-014   | Osteopathy                | Mobilisation of Spine/Joints| Thursday   | 2025-05-08  | 10:00 AM – 11:00 AM    | Dr. James Walker (Phy004)
+thu-w1-015   | Osteopathy                | Mobilisation of Spine/Joints| Thursday   | 2025-05-08  | 11:00 AM – 12:00 PM    | Dr. Nina Patel (Phy003)
+thu-w1-016   | Osteopathy                | Mobilisation of Spine/Joints| Thursday   | 2025-05-08  | 12:00 PM – 1:00 PM     | Dr. James Walker (Phy004)
+
+fri-w1-017   | Osteopathy                | Acupuncture                 | Friday     | 2025-05-09  | 9:00 AM – 10:00 AM     | Dr. Nina Patel (Phy003)
+fri-w1-018   | Osteopathy                | Acupuncture                 | Friday     | 2025-05-09  | 10:00 AM – 11:00 AM    | Dr. James Walker (Phy004)
+fri-w1-019   | Osteopathy                | Acupuncture                 | Friday     | 2025-05-09  | 11:00 AM – 12:00 PM    | Dr. Nina Patel (Phy003)
+fri-w1-020   | Osteopathy                | Acupuncture                 | Friday     | 2025-05-09  | 12:00 PM – 1:00 PM     | Dr. James Walker (Phy004)
+
+sat-w1-021   | Rehabilitation            | Massage (Rehabilitation)    | Saturday   | 2025-05-10  | 9:00 AM – 10:00 AM     | Dr. Sarah Thompson (Phy001)
+sat-w1-022   | Rehabilitation            | Massage (Rehabilitation)    | Saturday   | 2025-05-10  | 10:00 AM – 11:00 AM    | Dr. Emma Lewis (Phy005)
+sat-w1-023   | Rehabilitation            | Massage (Rehabilitation)    | Saturday   | 2025-05-10  | 11:00 AM – 12:00 PM    | Dr. Sarah Thompson (Phy001)
+sat-w1-024   | Rehabilitation            | Massage (Rehabilitation)    | Saturday   | 2025-05-10  | 12:00 PM – 1:00 PM     | Dr. Emma Lewis (Phy005)
+"""
+
+
+timetable.txt

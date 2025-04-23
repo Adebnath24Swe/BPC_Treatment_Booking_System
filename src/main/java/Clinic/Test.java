@@ -95,7 +95,7 @@ public class Test {
                 case "1" -> patientMenu(pManager, scanner);
                 case "2" -> physiotherapistMenu(scanner); // Call the new physiotherapist menu
                 case "3" -> appointmentBookingMenu(scanner, pManager);
-                case "4" -> appointmentBookingMenu(scanner, pManager);
+                case "4" -> generateReport();
                 case "5" -> {
                     System.out.println("Exiting system. Goodbye!");
                     running = false;
@@ -411,51 +411,26 @@ private static void appointmentBookingMenu(Scanner scanner, PatientManager pMana
    System.out.println("1. Book Appointment by Physiotherapist");
    System.out.println("2. Book Appointment by Area of Expertise (Coming Soon)");
    System.out.println("3. View All Appointments");
-   System.out.println("4. Delete Appointment by id");// Changed
-   System.out.println("5. Back to Main Menu");
+   System.out.println("4. Delete Appointment by id");
+   System.out.println("5. Update Booking Status");
+   System.out.println("6. Back to Main Menu");
    System.out.print("Choose an option: ");
    String choice = scanner.nextLine().trim();
 
    switch (choice) {
     case "1" -> bookAppointmentByPhysiotherapistAdmin(scanner, pManager);
-    case "2" -> System.out.println("This feature is coming soon.");
+    case "2" -> bookAppointmentByExpertise(scanner, pManager);
     case "3" -> viewAllAppointments(); // Call the new method
     case "4" -> removeAppointment(scanner);
-    case "5" -> back = true;
+    case "5" -> updateBookingStatus(scanner);
+    case "6" -> back = true;
+
     default -> System.out.println("Invalid option. Try again.");
    }
   }
  }
     
-    //------------------------
     
-    // Method to display all physiotherapists
-//    private static void displayAllPhysiotherapists() {
-//        System.out.println("\n--- All Physiotherapists ---");
-//        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h:mm a");
-//        DateTimeFormatter dateFormatter = DateTimeFormatter.ISO_DATE;
-//
-//        for (Physiotherapist physio : allPhysiotherapists) {
-//            physio.displayInfo();
-//
-//            List<ScheduledSlot> assignedSlots = physio.getAssignedSlots();
-//            if (assignedSlots != null && !assignedSlots.isEmpty()) {
-//                System.out.println("\n--- Assigned Time Slots for " + physio.getName() + " (ID: " + physio.getId() + ") ---");
-//                for (ScheduledSlot slot : assignedSlots) {
-//                    System.out.printf("Slot ID: %-10s | Date: %-12s | Time: %-15s | Treatment: %-30s | Area: %-20s%n",
-//                            slot.getId(),
-//                            slot.getDate().format(dateFormatter),
-//                            slot.getStartTime().format(timeFormatter) + " - " + slot.getEndTime().format(timeFormatter),
-//                            slot.getTreatment().getName(),
-//                            slot.getAreaOfExpertise().getName());
-//                }
-//            } else {
-//                System.out.println("\n" + physio.getName() + " (ID: " + physio.getId() + ") has no assigned time slots.");
-//            }
-//            System.out.println("---------------------------");
-//        }
-    //}
-
     
     //--------------new one to display
     private static void displayAllPhysiotherapists() {
@@ -708,6 +683,218 @@ private static void appointmentBookingMenu(Scanner scanner, PatientManager pMana
  
  //by expertise area appointment booking......
  
+ private static void bookAppointmentByExpertise(Scanner scanner, PatientManager pManager) {
+  System.out.println("\n--- Book Appointment by Area of Expertise ---");
+
+  // 1. Display Available Areas of Expertise
+  List<AreaOfExpertise> allExpertise = new ArrayList<>();
+  for (Physiotherapist physio : allPhysiotherapists) {
+   for (AreaOfExpertise expertise : physio.getExpertiseList()) {
+    if (!allExpertise.contains(expertise)) {
+     allExpertise.add(expertise);
+    }
+   }
+  }
+
+  if (allExpertise.isEmpty()) {
+   System.out.println("No areas of expertise are currently available.");
+   return;
+  }
+
+  System.out.println("\n--- Available Areas of Expertise ---");
+  for (int i = 0; i < allExpertise.size(); i++) {
+   System.out.printf("%d. %s\n", i + 1, allExpertise.get(i).getName());
+  }
+
+  System.out.print("Choose an Area of Expertise (enter the number): ");
+  if (scanner.hasNextInt()) {
+   int expertiseChoice = scanner.nextInt();
+   scanner.nextLine(); // Consume newline
+
+   if (expertiseChoice >= 1 && expertiseChoice <= allExpertise.size()) {
+    AreaOfExpertise selectedExpertise = allExpertise.get(expertiseChoice - 1);
+
+    // 3. Display Treatments in the Selected Area
+    List<Treatment> expertiseTreatments = selectedExpertise.getTreatments();
+    if (expertiseTreatments.isEmpty()) {
+     System.out.println("No treatments available in the selected area.");
+     return;
+    }
+
+    System.out.println("\n--- Available Treatments in " + selectedExpertise.getName() + " ---");
+    for (int i = 0; i < expertiseTreatments.size(); i++) {
+     System.out.printf("%d. %s\n", i + 1, expertiseTreatments.get(i).getName());
+    }
+
+    // 4. Allow User to Select a Treatment
+    System.out.print("Choose a Treatment (enter the number): ");
+    if (scanner.hasNextInt()) {
+     int treatmentChoice = scanner.nextInt();
+     scanner.nextLine(); // Consume newline
+
+     if (treatmentChoice >= 1 && treatmentChoice <= expertiseTreatments.size()) {
+      Treatment selectedTreatment = expertiseTreatments.get(treatmentChoice - 1);
+
+      // 5. Display Available Physiotherapists for the Treatment
+      List<Physiotherapist> availablePhysios = new ArrayList<>();
+      for (Physiotherapist physio : allPhysiotherapists) {
+       if (physio.offersTreatment(selectedTreatment.getName())) {
+        availablePhysios.add(physio);
+       }
+      }
+
+      if (availablePhysios.isEmpty()) {
+       System.out.println("No physiotherapists offer the selected treatment.");
+       return;
+      }
+
+      System.out.println("\n--- Available Physiotherapists for " + selectedTreatment.getName() + " ---");
+      for (int i = 0; i < availablePhysios.size(); i++) {
+       System.out.printf("%d. %s (ID: %s)\n", i + 1, availablePhysios.get(i).getName(), availablePhysios.get(i).getId());
+      }
+
+      // 6. Allow User to Select a Physiotherapist
+      System.out.print("Choose a Physiotherapist (enter the number): ");
+      if (scanner.hasNextInt()) {
+       int physioChoice = scanner.nextInt();
+       scanner.nextLine(); // Consume newline
+
+       if (physioChoice >= 1 && physioChoice <= availablePhysios.size()) {
+        Physiotherapist selectedPhysio = availablePhysios.get(physioChoice - 1);
+
+        // Now, proceed with selecting a patient and then an available slot
+        System.out.println("\n--- Available Patients ---");
+        List<Patient> allPatients = pManager.getPatient();
+        if (allPatients.isEmpty()) {
+         System.out.println("No patients registered in the system.");
+         return;
+        }
+        for (int i = 0; i < allPatients.size(); i++) {
+         System.out.printf("%d. %s (ID: %s)\n", i + 1, allPatients.get(i).getName(), allPatients.get(i).getId());
+        }
+
+        System.out.print("Choose a Patient (enter the number): ");
+        if (scanner.hasNextInt()) {
+         int patientChoice = scanner.nextInt();
+         scanner.nextLine(); // Consume newline
+
+         if (patientChoice >= 1 && patientChoice <= allPatients.size()) {
+          Patient currentPatient = allPatients.get(patientChoice - 1);
+
+          // 7. Display Available Slots
+          System.out.println("\n--- Available Slots for " + selectedTreatment.getName() + " with " + selectedPhysio.getName() + " ---");
+          List<ScheduledSlot> availableSlots = new ArrayList<>();
+          for (ScheduledSlot slot : generateDemoSchedule()) {
+           if (slot.getAssignedPhysiotherapist().equals(selectedPhysio) &&
+               slot.getTreatment().equals(selectedTreatment) &&
+               !slot.isBooked) {
+            availableSlots.add(slot);
+            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("EEE, dd-MMM-yyyy HH:mm");
+            System.out.printf("Slot ID: %s | Date & Time: %s\n", slot.getId(), slot.getDate().format(DateTimeFormatter.ISO_DATE) + " " + slot.getStartTime().format(DateTimeFormatter.ofPattern("HH:mm")) + " - " + slot.getEndTime().format(DateTimeFormatter.ofPattern("HH:mm")));
+           }
+          }
+
+          if (availableSlots.isEmpty()) {
+           System.out.println("No available slots for the selected treatment and physiotherapist.");
+           return;
+          }
+
+          // 8. Allow User to Select a Slot
+          System.out.print("Enter Slot ID to book for " + currentPatient.getName() + ": ");
+          String slotIdToBook = scanner.nextLine().trim();
+
+          // 9. Book the Appointment
+          for (ScheduledSlot slot : availableSlots) {
+           if (slot.getId().equalsIgnoreCase(slotIdToBook)) {
+            slot.isBooked = true;
+            Appointment newAppointment = new Appointment(currentPatient, slot);
+            allAppointments.add(newAppointment);
+            System.out.println("Appointment booked successfully for " + currentPatient.getName() + " (ID: " + currentPatient.getId() + ") with Slot ID: " + slotIdToBook + ", " + selectedPhysio.getName() + ", " + selectedTreatment.getName() + ".");
+            return;
+           }
+          }
+          System.out.println("Invalid Slot ID. Please try again.");
+
+         } else {
+          System.out.println("Invalid patient choice.");
+         }
+        } else {
+         System.out.println("Invalid input for patient choice.");
+         scanner.nextLine(); // Consume remaining input
+        }
+
+       } else {
+        System.out.println("Invalid physiotherapist choice.");
+       }
+      } else {
+       System.out.println("No physiotherapists offer the selected treatment.");
+      }
+
+     } else {
+      System.out.println("Invalid treatment choice.");
+     }
+    } else {
+     System.out.println("Invalid input for treatment choice.");
+     scanner.nextLine(); // Consume remaining input
+    }
+
+   } else {
+    System.out.println("Invalid area of expertise choice.");
+    scanner.nextLine(); // Consume remaining input
+   }
+  } else {
+   System.out.println("Invalid input for area of expertise choice.");
+   scanner.nextLine(); // Consume remaining input
+  }
+ }
  
+ private static void updateBookingStatus(Scanner scanner) {
+  System.out.println("\n--- Update Booking Status ---");
+  if (allAppointments.isEmpty()) {
+   System.out.println("No appointments have been booked yet.");
+   return;
+  }
+
+  System.out.println("Current Appointments:");
+  for (Appointment appointment : allAppointments) {
+   System.out.println("Appointment ID: " + appointment.getAppointmentId() +
+                      ", Patient: " + appointment.getPatient().getName() +
+                      ", Current Status: " + appointment.getStatus());
+  }
+
+  System.out.print("Enter the Appointment ID to update status: ");
+  if (scanner.hasNextInt()) {
+   int appointmentIdToUpdate = scanner.nextInt();
+   scanner.nextLine(); // Consume newline
+
+   Appointment appointmentToUpdate = null;
+   for (Appointment appointment : allAppointments) {
+    if (appointment.getAppointmentId() == appointmentIdToUpdate) {
+     appointmentToUpdate = appointment;
+     break;
+    }
+   }
+
+   if (appointmentToUpdate != null) {
+    System.out.print("Enter the new status (e.g., Attended): ");
+    String newStatus = scanner.nextLine().trim();
+    appointmentToUpdate.setStatus(newStatus);
+    System.out.println("Appointment ID " + appointmentIdToUpdate + " status updated to: " + newStatus);
+    appointmentToUpdate.displayAppointmentDetails(); // Show updated details
+   } else {
+    System.out.println("Appointment ID " + appointmentIdToUpdate + " not found.");
+   }
+  } else {
+   System.out.println("Invalid input. Please enter a valid Appointment ID.");
+   scanner.nextLine(); // Consume invalid input
+  }
+ }
+ 
+ 
+ //Report genarator:
+ 
+ private static void generateReport() {
+  ReportGenerator.generateMonthlyReport(allPhysiotherapists, allAppointments);
+ }
 }
 

@@ -1,38 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Clinic;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Apu_PC
- */
 public class AreaOfExpertise {
+
     private String name;
-    
-    private List<Treatment> treatmentList;
-    
-    
-    public AreaOfExpertise(String name){
-    
+    private List<Treatment> treatments;
+
+    public AreaOfExpertise(String name) {
         this.name = name;
-        this.treatmentList = new ArrayList<>();
+        this.treatments = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
-    
-    public void addTreatment(Treatment treatment){
-        
-        treatmentList.add(treatment) ; 
-    }
-    
+
     public List<Treatment> getTreatments() {
-        return treatmentList;
+        return treatments;
+    }
+
+    public void addTreatment(Treatment t) {
+        treatments.add(t);
+    }
+
+    public boolean hasTreatment(String treatmentName) {
+        for (Treatment t : treatments) {
+            if (t.getName().equalsIgnoreCase(treatmentName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
