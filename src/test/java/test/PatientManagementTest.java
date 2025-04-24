@@ -109,35 +109,7 @@ void setUp() throws IOException {
         assertTrue(true);
     }
 
-//    @Test
-//    void testAddNewPatient() throws IOException {
-//        // Simulate user input.
-//        String input = "Test User\nTest Address\n123-456-7890\n";
-//        Scanner scanner = new Scanner(input);
-//
-//        // Provide sample input to the user (optional, for clarity)
-//        System.out.println("Sample input: ");
-//        System.out.println("Name: Test User");
-//        System.out.println("Address: Test Address");
-//        System.out.println("Phone No: 123-456-7890");
-//
-//        try {
-//            patientManager.addNewPatient(scanner);
-//            assertEquals(1, patientManager.getPatient().size());
-//            assertEquals("Test User", patientManager.getPatient().get(0).getName());
-//
-//            // Verify file was written to.
-//            FileReader fileReader = new FileReader(testFilePath);
-//            char[] buffer = new char[1024];
-//            int bytesRead = fileReader.read(buffer);
-//            String fileContent = new String(buffer, 0, bytesRead);
-//            fileReader.close();
-//            assertTrue(fileContent.contains("Test User"));
-//        } catch (IOException e) {
-//            System.err.println("An IOException occurred: " + e.getMessage());
-//            throw e; // Re-throw the exception so the test fails.
-//        }
-//    }
+
 
 // add new patient new logic------
     
@@ -182,34 +154,7 @@ void setUp() throws IOException {
     }
 
     
-    //problem
-//    @Test
-//    void testRemovePatientById() throws IOException {
-//        Patient patient1 = new Patient("Alice", "Address 1", "111");
-//        patient1.setId("PT001");
-//        Patient patient2 = new Patient("Bob", "Address 2", "222");
-//        patient2.setId("PT002");
-//        addAndSavePatient(patient1);
-//        addAndSavePatient(patient2);
-//
-//        // Simulate user input with a Scanner.
-//        String input = "PT001\n";
-//        Scanner scanner = new Scanner(input);
-//        patientManager.removePatientById(scanner);
-//
-//        assertEquals(1, patientManager.getPatient().size());
-//        assertNull(patientManager.getPatient().stream().filter(p -> p.getId().equals("1")).findFirst().orElse(null));
-//        assertNotNull(patientManager.getPatient().stream().filter(p -> p.getId().equals("2")).findFirst().orElse(null));
-//
-//        // Check file contents
-//        FileReader fileReader = new FileReader(testFilePath);
-//        char[] buffer = new char[1024];
-//        int bytesRead = fileReader.read(buffer);
-//        String fileContent = new String(buffer, 0, bytesRead);
-//        fileReader.close();
-//        assertFalse(fileContent.contains("Alice"));
-//        assertTrue(fileContent.contains("Bob"));
-//    }
+  
 
     @Test
     public void testRemovePatientByIdSuccessfully() {
