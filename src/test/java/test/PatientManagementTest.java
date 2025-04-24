@@ -136,7 +136,7 @@ void setUp() throws IOException {
     
 //-----
     
-    
+    //checking save patient data to file.
     @Test
     void testSavePatientToFile() throws IOException {
         Patient patient = new Patient("File Test", "File Address", "999-888-7777");
