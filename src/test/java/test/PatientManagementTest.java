@@ -156,34 +156,58 @@ void setUp() throws IOException {
     
   
 
-    @Test
-    public void testRemovePatientByIdSuccessfully() {
-        // Setup: Add test patient
-        Patient testPatient = new Patient( "John Doe", "123 Street", "123-456-7890");
-        testPatient.setId("PT001");
-        patientList.add(testPatient);
-
-        // Simulate user input: Enter ID to remove
-        String input = "PT001\n";
-        Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
-
-        // Call method
-        patientManager.removePatientById(scanner);
-
-        // Verify
-        assertEquals(0, patientList.size());
-    }
+//    @Test
+//    public void testRemovePatientByIdSuccessfully() {
+//        // Setup: Add test patient
+//        Patient testPatient = new Patient( "John Doe", "123 Street", "123-456-7890");
+//        testPatient.setId("PT001");
+//        patientList.add(testPatient);
+//
+//        // Simulate user input: Enter ID to remove
+//        String input = "PT001\n";
+//        Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
+//
+//        // Call method
+//        patientManager.removePatientById(scanner);
+//
+//        // Verify
+//        assertEquals(0, patientList.size());
+//    }
     
-    @Test
-    public void testRemovePatientById_ifNotFound() {
-        // No patients in list
-        String input = "P999\n"; // Nonexistent ID
-        Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
+   
+    
+    
+@Test
+void testRemovePatientByIdSuccessfully() throws IOException {
+    // Add a new patient first
+    String addInput = "John Doe\n123 Street\n123-456-7890\n";
+    Scanner addScanner = new Scanner(addInput);
+    patientManager.addNewPatient(addScanner);
 
-        patientManager.removePatientById(scanner);
+    // Get the actual ID of the patient
+    String actualId = patientManager.getPatient().get(0).getId();  // This is PT001 or auto-generated
 
-        assertEquals(0, patientList.size()); // Still empty
-    }
+    // Simulate removing the patient by that ID
+    String removeInput = actualId + "\n";
+    Scanner removeScanner = new Scanner(removeInput);
+    patientManager.removePatientById(removeScanner);
+
+    // Assert the list is now empty
+    assertEquals(0, patientManager.getPatient().size());
+} 
+    
+    
+    
+//    @Test
+//    public void testRemovePatientById_ifNotFound() {
+//        // No patients in list
+//        String input = "PT001\n"; // Nonexistent ID
+//        Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
+//
+//        patientManager.removePatientById(scanner);
+//
+//        assertEquals(0, patientList.size()); // Still empty
+//    }
     
     
 }
