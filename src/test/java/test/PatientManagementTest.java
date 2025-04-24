@@ -98,6 +98,7 @@ void setUp() throws IOException {
         assertEquals("Jane Smith", patientManager.getPatient().get(1).getName());
     }
 
+    //display all patient data logic checking.
     @Test
     void testDisplayAllPatient() {
         // Check method runs without errors.
