@@ -83,7 +83,7 @@ void setUp() throws IOException {
         patientManager.getPatient().add(patient);
         patientManager.savePatientTofile(testFilePath, patient);
     }
-// load patient info
+// load patient data info
     @Test
     void testLoadPatientFromFile() throws IOException {
         // Create a file with test data
