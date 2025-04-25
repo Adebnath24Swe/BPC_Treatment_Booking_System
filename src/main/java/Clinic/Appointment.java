@@ -58,7 +58,7 @@ package Clinic;
    System.out.println("Patient: " + patient.getName() + " (ID: " + patient.getId() + ")");
    System.out.println("Physiotherapist: " + scheduledSlot.getAssignedPhysiotherapist().getName() + " (ID: " + scheduledSlot.getAssignedPhysiotherapist().getId() + ")");
    System.out.println("Treatment: " + scheduledSlot.getTreatment().getName());
-   System.out.println("Date & Time: " + getFormattedDateTime()); // Using the new format
+   System.out.println("Date and Time: " + getFormattedDateTime()); // Using the new format
    System.out.println("Booking Status: " + status); // Displaying the status
    System.out.println("Booked on: " + bookingDateTime.format(bookingDateTimeFormatter));
    System.out.println("--------------------");

@@ -87,12 +87,13 @@ public class ClinicSystemTest {
 
         while (running) {
             // Main menu
-            System.out.println("\n=== BPC Booking System ===");
+            System.out.println("\n=== BPC Treatment Booking System ===");
             System.out.println("1. Patient Management");
             System.out.println("2. Physiotherapist Management");
             System.out.println("3. Appointment Booking");
-            System.out.println("4. Generate Report");
-            System.out.println("5. Exit");
+            System.out.println("4. Show Timetable of Physiotherapists");
+            System.out.println("5. Generate Report");
+            System.out.println("6. Exit");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine().trim();
 
@@ -100,8 +101,19 @@ public class ClinicSystemTest {
                 case "1" -> patientMenu(pManager, scanner);
                 case "2" -> physiotherapistMenu(scanner); // Call the new physiotherapist menu
                 case "3" -> appointmentBookingMenu(scanner, pManager);
-                case "4" -> generateReport();
-                case "5" -> {
+                case "4" -> {
+                
+                    associateExpertiseWithPhysiotherapists();
+
+        // Generate demo schedule
+        
+
+        
+        generatePhysiotherapistScheduleOutput(weeklySchedule);
+                
+                }
+                case "5" -> generateReport();
+                case "6" -> {
                     System.out.println("Exiting system. Goodbye!");
                     running = false;
                 }
@@ -221,7 +233,9 @@ public class ClinicSystemTest {
             }
         }
 
-        // Create the scheduled slots directly
+       // ========Create the scheduled slots directly---------------
+       
+       //Week-1: ------------------------------
         schedule.add(new ScheduledSlot("sun-w1-001", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek, LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
         schedule.add(new ScheduledSlot("sun-w1-002", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek, LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
         schedule.add(new ScheduledSlot("sun-w1-003", osteopathy, acupuncture, DayOfWeek.SUNDAY, startOfWeek, LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
@@ -290,6 +304,224 @@ public class ClinicSystemTest {
         schedule.add(new ScheduledSlot("sat-w1-055", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusDays(6), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
         
         
+        // Week-2:-------------------------
+        schedule.add(new ScheduledSlot("sun-w2-001", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("sun-w2-002", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("sun-w2-003", osteopathy, acupuncture, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sun-w2-004", rehabilitation, poolRehabilitation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sun-w2-005", physiotherapy, massagePhysio, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("sun-w2-006", osteopathy, mobilisationSpineJoints, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sun-w2-007", rehabilitation, massageRehab, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sun-w2-008", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(1), LocalTime.parse("16:00"), LocalTime.parse("17:00"), sarahThompson));
+
+        schedule.add(new ScheduledSlot("mon-w2-009", physiotherapy, massagePhysio, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("mon-w2-010", osteopathy, mobilisationSpineJoints, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("mon-w2-011", rehabilitation, poolRehabilitation, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("mon-w2-012", physiotherapy, neuralMobilisation, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("mon-w2-013", osteopathy, acupuncture, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("mon-w2-014", rehabilitation, massageRehab, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("mon-w2-015", physiotherapy, massagePhysio, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("mon-w2-016", osteopathy, mobilisationSpineJoints, DayOfWeek.MONDAY, startOfWeek.plusWeeks(1).plusDays(1), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+
+       
+        
+        schedule.add(new ScheduledSlot("tue-w2-017", physiotherapy, massagePhysio, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("tue-w2-018", osteopathy, mobilisationSpineJoints, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("tue-w2-019", rehabilitation, poolRehabilitation, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("tue-w2-020", physiotherapy, neuralMobilisation, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("tue-w2-021", osteopathy, acupuncture, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("tue-w2-022", rehabilitation, massageRehab, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("tue-w2-023", physiotherapy, massagePhysio, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("tue-w2-024", osteopathy, mobilisationSpineJoints, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(1).plusDays(2), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        
+        schedule.add(new ScheduledSlot("wed-w2-025", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("wed-w2-026", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("wed-w2-027", osteopathy, acupuncture, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("wed-w2-028", rehabilitation, poolRehabilitation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("wed-w2-029", physiotherapy, massagePhysio, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("wed-w2-030", osteopathy, mobilisationSpineJoints, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("wed-w2-031", rehabilitation, massageRehab, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("Wed-w2-032", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(1).plusDays(3), LocalTime.parse("16:00"), LocalTime.parse("17:00"), alexReed));
+        
+        
+        schedule.add(new ScheduledSlot("thu-w2-033", physiotherapy, massagePhysio, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("thu-w2-034", osteopathy, mobilisationSpineJoints, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("thu-w2-035", rehabilitation, poolRehabilitation, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("thu-w2-036", physiotherapy, neuralMobilisation, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("thu-w2-037", osteopathy, acupuncture, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("thu-w2-038", rehabilitation, massageRehab, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("thu-w2-039", physiotherapy, massagePhysio, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("thu-w2-040", osteopathy, mobilisationSpineJoints, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(1).plusDays(4), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        schedule.add(new ScheduledSlot("fri-w2-041", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("fri-w2-042", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("fri-w2-043", osteopathy, acupuncture, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("fri-w2-044", rehabilitation, poolRehabilitation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("fri-w2-045", physiotherapy, massagePhysio, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("fri-w2-046", osteopathy, mobilisationSpineJoints, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("fri-w2-047", rehabilitation, massageRehab, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("f2i-w2-048", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(1).plusDays(5), LocalTime.parse("16:00"), LocalTime.parse("17:00"), alexReed));
+
+        schedule.add(new ScheduledSlot("sat-w2-048", physiotherapy, massagePhysio, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("sat-w2-049", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sat-w2-050", rehabilitation, poolRehabilitation, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sat-w2-051", physiotherapy, neuralMobilisation, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("12:00"), LocalTime.parse("13:00"), alexReed));
+        schedule.add(new ScheduledSlot("sat-w2-052", osteopathy, acupuncture, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sat-w2-053", rehabilitation, massageRehab, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sat-w2-054", physiotherapy, massagePhysio, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("sat-w2-055", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(1).plusDays(6), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        
+        // Week-3:-------------------------
+        schedule.add(new ScheduledSlot("sun-w3-001", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("sun-w3-002", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("sun-w3-003", osteopathy, acupuncture, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sun-w3-004", rehabilitation, poolRehabilitation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sun-w3-005", physiotherapy, massagePhysio, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("sun-w3-006", osteopathy, mobilisationSpineJoints, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sun-w3-007", rehabilitation, massageRehab, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sun-w3-008", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(2), LocalTime.parse("16:00"), LocalTime.parse("17:00"), sarahThompson));
+        
+        
+        schedule.add(new ScheduledSlot("mon-w3-009", physiotherapy, massagePhysio, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("mon-w3-010", osteopathy, mobilisationSpineJoints, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("mon-w3-011", rehabilitation, poolRehabilitation, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("mon-w3-012", physiotherapy, neuralMobilisation, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("mon-w3-013", osteopathy, acupuncture, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("mon-w3-014", rehabilitation, massageRehab, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("mon-w3-015", physiotherapy, massagePhysio, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("mon-w3-016", osteopathy, mobilisationSpineJoints, DayOfWeek.MONDAY, startOfWeek.plusWeeks(2).plusDays(1), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+
+       
+        
+        schedule.add(new ScheduledSlot("tue-w3-017", physiotherapy, massagePhysio, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("tue-w3-018", osteopathy, mobilisationSpineJoints, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("tue-w3-019", rehabilitation, poolRehabilitation, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("tue-w3-020", physiotherapy, neuralMobilisation, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("tue-w3-021", osteopathy, acupuncture, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("tue-w3-022", rehabilitation, massageRehab, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("tue-w3-023", physiotherapy, massagePhysio, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("tue-w3-024", osteopathy, mobilisationSpineJoints, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(2).plusDays(2), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        
+        schedule.add(new ScheduledSlot("wed-w3-025", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("wed-w3-026", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("wed-w3-027", osteopathy, acupuncture, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("wed-w3-028", rehabilitation, poolRehabilitation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("wed-w3-029", physiotherapy, massagePhysio, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("wed-w3-030", osteopathy, mobilisationSpineJoints, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("wed-w3-031", rehabilitation, massageRehab, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("Wed-w3-032", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(2).plusDays(3), LocalTime.parse("16:00"), LocalTime.parse("17:00"), alexReed));
+        
+        
+        schedule.add(new ScheduledSlot("thu-w3-033", physiotherapy, massagePhysio, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("thu-w3-034", osteopathy, mobilisationSpineJoints, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("thu-w3-035", rehabilitation, poolRehabilitation, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("thu-w3-036", physiotherapy, neuralMobilisation, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("thu-w3-037", osteopathy, acupuncture, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("thu-w3-038", rehabilitation, massageRehab, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("thu-w3-039", physiotherapy, massagePhysio, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("thu-w3-040", osteopathy, mobilisationSpineJoints, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(2).plusDays(4), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        schedule.add(new ScheduledSlot("fri-w3-041", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("fri-w3-042", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("fri-w3-043", osteopathy, acupuncture, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("fri-w3-044", rehabilitation, poolRehabilitation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("fri-w3-045", physiotherapy, massagePhysio, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("fri-w3-046", osteopathy, mobilisationSpineJoints, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("fri-w3-047", rehabilitation, massageRehab, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("f2i-w3-048", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(2).plusDays(5), LocalTime.parse("16:00"), LocalTime.parse("17:00"), alexReed));
+
+        schedule.add(new ScheduledSlot("sat-w3-048", physiotherapy, massagePhysio, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("sat-w3-049", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sat-w3-050", rehabilitation, poolRehabilitation, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sat-w3-051", physiotherapy, neuralMobilisation, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("12:00"), LocalTime.parse("13:00"), alexReed));
+        schedule.add(new ScheduledSlot("sat-w3-052", osteopathy, acupuncture, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("13:00"), LocalTime.parse("14:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sat-w3-053", rehabilitation, massageRehab, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sat-w3-054", physiotherapy, massagePhysio, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("sat-w3-055", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(2).plusDays(6), LocalTime.parse("16:00"), LocalTime.parse("17:00"), ninaPatel));
+        
+        
+        
+        
+        
+        //============================================week4========================
+        // Week-4:-------------------------
+        schedule.add(new ScheduledSlot("sun-w4-001", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("sun-w4-002", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("10:00"), LocalTime.parse("11:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("sun-w4-003", osteopathy, acupuncture, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sun-w4-004", rehabilitation, poolRehabilitation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sun-w4-005", physiotherapy, massagePhysio, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("13:00"), LocalTime.parse("14:00"), alexReed));
+        schedule.add(new ScheduledSlot("sun-w4-006", osteopathy, mobilisationSpineJoints, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sun-w4-007", rehabilitation, massageRehab, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sun-w4-008", physiotherapy, neuralMobilisation, DayOfWeek.SUNDAY, startOfWeek.plusWeeks(3), LocalTime.parse("16:00"), LocalTime.parse("17:00"), sarahThompson));
+        
+       
+        schedule.add(new ScheduledSlot("mon-w4-009", physiotherapy, massagePhysio, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("mon-w4-010", osteopathy, mobilisationSpineJoints, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("mon-w4-011", rehabilitation, poolRehabilitation, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("mon-w4-012", physiotherapy, neuralMobilisation, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("mon-w4-013", osteopathy, acupuncture, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("mon-w4-014", rehabilitation, massageRehab, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("mon-w4-015", physiotherapy, massagePhysio, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("mon-w4-016", osteopathy, mobilisationSpineJoints, DayOfWeek.MONDAY, startOfWeek.plusWeeks(3).plusDays(1), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+
+       
+        
+        schedule.add(new ScheduledSlot("tue-w4-017", physiotherapy, massagePhysio, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("tue-w4-018", osteopathy, mobilisationSpineJoints, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("tue-w4-019", rehabilitation, poolRehabilitation, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("tue-w4-020", physiotherapy, neuralMobilisation, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("tue-w4-021", osteopathy, acupuncture, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("tue-w4-022", rehabilitation, massageRehab, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("tue-w4-023", physiotherapy, massagePhysio, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("tue-w4-024", osteopathy, mobilisationSpineJoints, DayOfWeek.TUESDAY, startOfWeek.plusWeeks(3).plusDays(2), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        
+        schedule.add(new ScheduledSlot("wed-w4-025", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("wed-w4-026", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("wed-w4-027", osteopathy, acupuncture, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("wed-w4-028", rehabilitation, poolRehabilitation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("wed-w4-029", physiotherapy, massagePhysio, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("wed-w4-030", osteopathy, mobilisationSpineJoints, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("wed-w4-031", rehabilitation, massageRehab, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("Wed-w4-032", physiotherapy, neuralMobilisation, DayOfWeek.WEDNESDAY, startOfWeek.plusWeeks(3).plusDays(3), LocalTime.parse("16:00"), LocalTime.parse("17:00"), alexReed));
+        
+        
+        schedule.add(new ScheduledSlot("thu-w4-033", physiotherapy, massagePhysio, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("09:00"), LocalTime.parse("10:00"), alexReed));
+        schedule.add(new ScheduledSlot("thu-w4-034", osteopathy, mobilisationSpineJoints, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("thu-w4-035", rehabilitation, poolRehabilitation, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("thu-w4-036", physiotherapy, neuralMobilisation, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("12:00"), LocalTime.parse("13:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("thu-w4-037", osteopathy, acupuncture, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("13:00"), LocalTime.parse("14:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("thu-w4-038", rehabilitation, massageRehab, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("thu-w4-039", physiotherapy, massagePhysio, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("thu-w4-040", osteopathy, mobilisationSpineJoints, DayOfWeek.THURSDAY, startOfWeek.plusWeeks(3).plusDays(4), LocalTime.parse("16:00"), LocalTime.parse("17:00"), jamesWalker));
+        
+        schedule.add(new ScheduledSlot("fri-w4-041", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("fri-w4-042", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("10:00"), LocalTime.parse("11:00"), alexReed));
+        schedule.add(new ScheduledSlot("fri-w4-043", osteopathy, acupuncture, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("11:00"), LocalTime.parse("12:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("fri-w4-044", rehabilitation, poolRehabilitation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("12:00"), LocalTime.parse("13:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("fri-w4-045", physiotherapy, massagePhysio, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("13:00"), LocalTime.parse("14:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("fri-w4-046", osteopathy, mobilisationSpineJoints, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("14:00"), LocalTime.parse("15:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("fri-w4-047", rehabilitation, massageRehab, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("15:00"), LocalTime.parse("16:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("f2i-w4-048", physiotherapy, neuralMobilisation, DayOfWeek.FRIDAY, startOfWeek.plusWeeks(3).plusDays(5), LocalTime.parse("16:00"), LocalTime.parse("17:00"), alexReed));
+
+        schedule.add(new ScheduledSlot("sat-w4-048", physiotherapy, massagePhysio, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("09:00"), LocalTime.parse("10:00"), sarahThompson));
+        schedule.add(new ScheduledSlot("sat-w4-049", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("10:00"), LocalTime.parse("11:00"), ninaPatel));
+        schedule.add(new ScheduledSlot("sat-w4-050", rehabilitation, poolRehabilitation, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("11:00"), LocalTime.parse("12:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sat-w4-051", physiotherapy, neuralMobilisation, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("12:00"), LocalTime.parse("13:00"), alexReed));
+        schedule.add(new ScheduledSlot("sat-w4-052", osteopathy, acupuncture, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("13:00"), LocalTime.parse("14:00"), jamesWalker));
+        schedule.add(new ScheduledSlot("sat-w4-053", rehabilitation, massageRehab, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("14:00"), LocalTime.parse("15:00"), emmaLewis));
+        schedule.add(new ScheduledSlot("sat-w4-054", physiotherapy, massagePhysio, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("15:00"), LocalTime.parse("16:00"), alexReed));
+        schedule.add(new ScheduledSlot("sat-w4-055", osteopathy, mobilisationSpineJoints, DayOfWeek.SATURDAY, startOfWeek.plusWeeks(3).plusDays(6), LocalTime.parse("16:00"), LocalTime.parse("17:00"), ninaPatel));
+        
+        //fiexed 4 weekdemo data has been assigned here to check logiacl implementation only.
+        
+        
+        
+        
+        
         // Assign the slots to the physiotherapists
         for (ScheduledSlot slot : schedule) {
             if (slot.getAssignedPhysiotherapist() != null) {
@@ -300,7 +532,7 @@ public class ClinicSystemTest {
     }
 //
     private static void generatePhysiotherapistScheduleOutput(List<ScheduledSlot> weeklySchedule) {
-        System.out.println("Week 1 – Physiotherapist Assignment Schedule (May 2025)\n");
+        System.out.println("– Physiotherapist Treatment's Schedule (May 2025)\n");
         System.out.println("Physiotherapists & Expertise:");
         for (Physiotherapist phy : allPhysiotherapists) {
             String expertise = phy.getExpertiseList().stream()
@@ -338,6 +570,8 @@ public class ClinicSystemTest {
                     physioName,
                     physioId);
         }
+        
+        
     }
 
     //--------All sub menus goes here-------
@@ -375,7 +609,7 @@ private static void physiotherapistMenu(Scanner scanner) {
             System.out.println("1. Display All Physiotherapists");
             System.out.println("2. Show timetable");
             System.out.println("3. Display Physiotherapist Details by ID");
-            System.out.println("4. Generate Timetable for 4 week");
+            System.out.println("4. Generate Timetable for 4 week.");
             System.out.println("5. Back to Main Menu");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine().trim();
@@ -383,12 +617,12 @@ private static void physiotherapistMenu(Scanner scanner) {
             switch (choice) {
                 case "1" -> displayAllPhysiotherapists();
                 case "2" -> {
-                associateExpertiseWithPhysiotherapists();
+        associateExpertiseWithPhysiotherapists();
 
         // Generate demo schedule
         List<ScheduledSlot> weeklySchedule = generateDemoSchedule();
 
-        // Output the schedule for the first week
+        
         generatePhysiotherapistScheduleOutput(weeklySchedule);
                 
                 }
@@ -421,9 +655,9 @@ private static void physiotherapistMenu(Scanner scanner) {
 private static void appointmentBookingMenu(Scanner scanner, PatientManager pManager) {
   boolean back = false;
   while (!back) {
-   System.out.println("\n=== Appointment Booking Menu (Admin/User) ===");
+   System.out.println("\n=== Appointment Booking Menu (Admin or User) ===");
    System.out.println("1. Book Appointment by Physiotherapist");
-   System.out.println("2. Book Appointment by Area of Expertise (Coming Soon)");
+   System.out.println("2. Book Appointment by Area of Expertise.");
    System.out.println("3. View All Appointments");
    System.out.println("4. Delete Appointment by id");
    System.out.println("5. Update Booking Status");
