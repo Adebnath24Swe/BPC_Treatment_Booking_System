@@ -1,4 +1,3 @@
-
 PT006,Mr. Sagor Maity,Amedabad , 345Lahor, St,+923543654
 PT007,Mr. Apurba debnath,St932, Gulsan Road, Dhaka,+91235432543
 PT006,John Doe,123 Street,123-456-7890
