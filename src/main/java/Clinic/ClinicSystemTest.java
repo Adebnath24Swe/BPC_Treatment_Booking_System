@@ -298,7 +298,7 @@ public class ClinicSystemTest {
         }
         return schedule;
     }
-
+//
     private static void generatePhysiotherapistScheduleOutput(List<ScheduledSlot> weeklySchedule) {
         System.out.println("Week 1 – Physiotherapist Assignment Schedule (May 2025)\n");
         System.out.println("Physiotherapists & Expertise:");
