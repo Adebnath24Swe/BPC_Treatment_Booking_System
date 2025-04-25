@@ -1,0 +1,32 @@
+* 379d0c4 (HEAD -> master, origin/master) Patient.txt updated
+* e9568eb Patient.txt updated
+* a824f1e Patient.txt updated
+* 2309149 Demo test data added successfully to text_patient.txt file to check save data to file method.
+* 8e0047f Fixing pom.xml file, add plugins and mentioned execution point to run the whole project.
+* e830c00 Implemented monthly report generation and verified functionality with JUnit tests
+* 30af769 Successfully implemented and generated monthly report.
+* ac95880 Display Physiotherapist by ID
+* 9d8ae3f Junit test of load patient data is passed successfully
+* 0bb653c Junit test of display all patient data is passed successfully by testDisplayAllPatient() method.
+* 30f6d78 Testing add new patient to file logic is passed successfully by testAddNewPatientSuccessfully() method.
+* 35effc2 Testing save patient to file logic is passed successfully.
+* 87411db Junit test for testRemovePatientByIdSuccessfully() is working as the logic of removing id of patient.
+* 096bf54 Junit test testRemovePatientById_ifNotFound() is working as logic.
+* 0da42f7 Junit test testRemovePatientById_ifNotFound() is working as logic.
+* 2e34c19 Patient management test cases done successfully including add, remove, save and display logic.
+* 22b405b Report functionalities generate successfully with ranking of physiotherapist in descending order.
+* dc8b542 Report functionalities generate successfully with all details.
+* ab12223 Appointment booking functionality has been added successfully with patient id and booking status.
+* 96853e2 Successfully added display physiotherapist information by their id.
+* 65afb95 Physiotherapist added successfully with their specific basic, expert areas, and treatment slots or time.
+* 1c0acf8 Physiotherapist added successfully with their specific basic, expert areas, and treatment slots or time.
+* c42a1e5  Patient sub-menu updated and created successfully.
+* 77a06c4 Display all patient data to user.
+* fd59947 All patient data updated to file after one removed.
+* bb959c3 Remove any patient by it's id.
+* a76d0c0  load patient data successfully.
+* dd46ee3 Add patient data to patient list and save to file.
+* 0bb4da9 Patient data is saved successfully to "patient.txt" file.
+* 9d9f845 Patient id is auto incremented.
+* 7d4b7e1 Patient Add and Remove function is working perfectly.
+* 3831d85 Patient Add and Remove function is working.
